@@ -3,8 +3,9 @@ package shbd.flowlayout.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,10 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void initData() {
         for (int i = 0; i < mDatas.size(); i++) {
-            Button btn = new Button(this);
+            View view= (View) View.inflate(getApplicationContext(),R.layout.item_text,null);
+            TextView textView= (TextView) view.findViewById(R.id.textview);
             ViewGroup.MarginLayoutParams params = new ViewGroup.MarginLayoutParams(ViewGroup.MarginLayoutParams.WRAP_CONTENT, ViewGroup.MarginLayoutParams.WRAP_CONTENT);
-            btn.setText(mDatas.get(i));
-            mFlowLayout.addView(btn,params);
+            textView.setText(mDatas.get(i));
+            mFlowLayout.addView(view,params);
             Log.e("tag", "initData: ");
         }
     }
